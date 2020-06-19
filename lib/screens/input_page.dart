@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:bmi_calculator/components/reusable_card.dart';
@@ -7,6 +6,7 @@ import 'package:bmi_calculator/constants.dart';
 import 'package:bmi_calculator/components/bottom_CTA.dart';
 import 'package:bmi_calculator/components/round_button.dart';
 import 'package:bmi_calculator/screens/results_page.dart';
+import 'package:bmi_calculator/calculator_brain.dart';
 
 enum Gender {
   male,
@@ -213,18 +213,24 @@ class _InputPageState extends State<InputPage> {
             ),
           ),
           BottomCTA(
-            buttonTitle: 'CALCULATE', 
-            onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => ResultsPage()),
-        );
-      }),
+              buttonTitle: 'CALCULATE',
+              onTap: () {
+                CalculatorBrain calc = CalculatorBrain( // creating the object calc of the bluebrint calculatorBrain
+                  height: height,
+                  weight: weight,
+                );
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ResultsPage(
+                    bmiResult: calc.calculateBMI(),
+                    resultText: calc.getResult(),
+                    interpretation: calc.getInterpretation(),
+                  )),
+                );
+              }),
         ],
       ),
     );
   }
 }
-
-
-
