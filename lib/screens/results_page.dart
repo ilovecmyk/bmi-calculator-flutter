@@ -57,7 +57,7 @@ final String interpretation;
             BottomCTA(
                 buttonTitle: 'RE-CALCULATE',
                 onTap: () {
-                  Navigator.pop(context);
+                  Navigator.pop(context); //using simply pop to destroy the screen and return to the previous one (without having to define that screen specifically)
                 }),
           ],
         ));

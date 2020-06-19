@@ -223,8 +223,8 @@ class _InputPageState extends State<InputPage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => ResultsPage(
-                    bmiResult: calc.calculateBMI(),
-                    resultText: calc.getResult(),
+                    bmiResult: calc.calculateBMI(), //accessing the functions in the calculaterBrain class
+                    resultText: calc.getResult(), //variables defined in results_page which is imported here as well
                     interpretation: calc.getInterpretation(),
                   )),
                 );
